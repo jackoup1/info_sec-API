@@ -4,7 +4,6 @@ venv/
 __pycache__/
 
 # Ignore configuration and sensitive files
-security.py
 
 # Ignore environment files
 .env

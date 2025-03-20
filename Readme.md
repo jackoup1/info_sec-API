@@ -223,3 +223,6 @@ The application's configuration is defined in `config.py`. Key settings include:
    ```bash
    git clone <repository_url>
    cd <project_directory>
+2. **Install dependencies**:
+ ```bash
+ pip install -r requirements.txt

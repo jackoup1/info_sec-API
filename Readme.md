@@ -3,7 +3,7 @@
 ## **Index**
 1. [Overview](#overview)
 2. [Project Structure](#project-structure)
-3. [Functionality](#functionality)
+3. [Functionality and Endpoints Examples](#functionality-and-endpoints-examples)
    - [Authentication](#1-authentication)
    - [User Management](#2-user-management)
    - [Product Management](#3-product-management)
@@ -13,8 +13,9 @@
 5. [Security](#security)
 6. [Configuration](#configuration)
 7. [Installation and Setup](#installation-and-setup)
-8. [Example Usage](#example-usage)
-9. [Conclusion](#conclusion)
+   - [Prerequisites](#1-prerequisites)
+   - [Steps to Run the Project](#2-steps-to-run-the-project)
+8. [Conclusion](#conclusion)
 
 ---
 
@@ -45,7 +46,7 @@ The project is organized into the following files and directories:
 
 ---
 
-## **Functionality**
+## **Functionality and Endpoints Examples**
 
 ### **1. Authentication**
 The application provides user authentication using JWT (JSON Web Tokens). Users can sign up and log in to the system.
@@ -91,7 +92,6 @@ The application provides user authentication using JWT (JSON Web Tokens). Users 
 [Back to Index](#index)
 
 ---
-
 ### **2. User Management**
 Users can update their details (name and username) after logging in. The endpoints are protected by JWT authentication.
 
@@ -213,16 +213,59 @@ The application's configuration is defined in `config.py`. Key settings include:
 
 ## **Installation and Setup**
 
-### **1. Prerequisites**
-- Python 3.x
-- MySQL database
-- `pip` for installing dependencies
+   ### **1. Prerequisites**
+   - Python 3.x
+   - MySQL database
+   - `pip` for installing dependencies
 
+---
+   
 ### **2. Steps to Run the Project**
+
 1. **Clone the repository**:
    ```bash
-   git clone <repository_url>
-   cd <project_directory>
-2. **Install dependencies**:
- ```bash
- pip install -r requirements.txt
+      git clone https://github.com/jackoup1/info_sec-API.git
+      cd <project_directory>
+   ```   
+   -  **Install dependencies:**
+      ```bash
+         pip install -r requirements.txt
+      
+   -  **Create the Database:**
+      ```sql
+         CREATE DATABASE info_sec;
+      
+   - **Create the Tables:**
+      ```sql
+         USE info_sec;
+         
+         CREATE TABLE users (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         name VARCHAR(25) NOT NULL,
+         username VARCHAR(50) NOT NULL UNIQUE,
+         password VARCHAR(256) NOT NULL
+         );
+         
+         CREATE TABLE products (
+         pid INT AUTO_INCREMENT PRIMARY KEY,
+         pname VARCHAR(100) NOT NULL,
+         description TEXT,
+         price DECIMAL(10, 2) NOT NULL,
+         stock INT NOT NULL,
+         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+         );
+      
+   - **Run the application:**
+      ```bash
+         python main.py
+   
+   - **Access the API:**
+      -The application will run on http://127.0.0.1:5000.
+      -Use tools like Postman or cURL to interact with the API
+   
+   [Back to Index](#index)
+---
+## **Conclusion**
+   This project provides a secure and modular Flask-based API for user and product management. It is designed to be easily extendable, with clear separation of concerns between models, routes, and utilities. The use of JWT ensures secure authentication, and the modular    structure makes it easy to add new features in the future.
+   
+[Back to Index](#index)
